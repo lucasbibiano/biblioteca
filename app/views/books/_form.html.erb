@@ -1,0 +1,47 @@
+<script>
+    $(document).ready(function(){
+  $(".chzn-select").chosen();
+  });
+</script>
+
+<%= form_for(@book) do |f| %>
+  <% if @book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+      <ul>
+      <% @book.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ISBN, "ISBN" %><br />
+    <%= f.text_field :ISBN %>
+  </div>
+  <div class="field">
+    <%= f.label :title, "Título" %><br />
+    <%= f.text_field :title, class: "span8" %>
+  </div>
+  <div class="field">
+    <%= f.label :subtitle, "Subtítulo" %><br />
+    <%= f.text_field :subtitle, class: "span8" %>
+  </div>
+  <div class="field">
+    <%= f.label :year, "Ano" %><br />
+    <%= f.number_field :year, class: "span1" %>
+  </div>
+  <div class="field">
+    <%= f.label :synopsis, "Informações adicionais" %><br />
+    <%= f.text_area :synopsis, class: "span12", rows: "5" %>
+  </div>
+  <div class="field">
+    <%= f.label :author, "Autor" %><br />
+    <%= f.collection_select('authors', Author.all, :id, :name, {:selected => @book.authors.map(&:id)}, {class: 'chzn-select', multiple: true}) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

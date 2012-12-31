@@ -1,0 +1,28 @@
+<h2>Criar conta</h2>
+
+<%= form_for @person do |f| %>
+
+  <div><%= f.label :name, "Nome" %><br />
+  <%= f.text_field :name %></div>
+
+  <div><%= f.label :phone, "Telefone" %><br />
+  <%= f.phone_field :phone %></div>
+
+  <div><%= f.label :address, "Endereço" %><br />
+  <%= f.text_area :address, size: "10x10" %></div>
+
+  <%= f.fields_for :profile do |ff| %>
+
+    <div><%= ff.label :email %><br />
+    <%= ff.email_field :email %></div>
+
+    <div><%= ff.label :password, "Senha" %><br />
+    <%= ff.password_field :password %></div>
+
+    <div><%= ff.label :password_confirmation, "Digite sua senha novamente" %><br />
+    <%= ff.password_field :password_confirmation %></div>
+
+  <% end %>
+
+  <div><%= f.submit "Enviar" %></div>
+<% end %>

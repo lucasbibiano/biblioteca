@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ISBN: MyString
+  title: MyString
+  subtitle: MyString
+  year: 1
+  synopsis: MyText
+
+two:
+  ISBN: MyString
+  title: MyString
+  subtitle: MyString
+  year: 1
+  synopsis: MyText
